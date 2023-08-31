@@ -23,4 +23,16 @@ create table favorite_food(
         references person(person_id)
         
 );
-    desc favorite_food
+    desc favorite_food;
+    select * from information_schema.table_constraints
+    where constraint_schema = 'first_example';
+    
+insert into person values
+						  ('3', 'Charles', 'Silva', 'M', '1979-08-21',
+	'rua','cidade J', 'RJ', 'Brasil', '12231-20'),
+						  ('4', 'Tonia', 'Silva', 'F', '1979-08-21',
+	'rua','cidade J', 'RJ', 'Brasil', '12231-20');
+	
+insert into favorite_food values ('3', 'peixe');
+								 
+select * from favorite_food
