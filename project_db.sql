@@ -33,11 +33,12 @@ create table departament(
     constraint pk_department primary key(Dnumber),
     constraint unique_name_dept Unique(Dname),
     foreign key(Mgr_ssn) references Employee(Ssn)
-
 );
 
+desc departament;
+
 -- def	company_constraints	departament_ibfk_1	company_constraints	departament	FOREIGN KEY	YES
-alter table departament drop constraint departament_ibfk_1;
+alter table departament drop constraint chk_date_dept;
 alter table departament
 	add constraint fk_dept foreign key(Mgr_ssn) references Employee(Ssn)
 	on update cascade;
@@ -76,14 +77,15 @@ create table works_on(
     
 );
 
+drop table dependent;
+
+
 create table dependent(
 	Essn char(9) not null,
     Dependent_name varchar(15) not null,
     Sex char, -- F ou M
     Bdate date, 
     Relationship varchar(8),
-    age int not null,
-    constraint chk_age_dependent check(age < 22),
     constraint pk_dependent primary key(Essn, Dependent_name),
     constraint fk_dependent foreign key(Essn) references employee(Ssn)
 );
